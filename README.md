@@ -1,27 +1,17 @@
 # PokExamen
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.1.
+PokExamen es una aplicación web que combina Angular con PrimeNG para el frontend y Laravel para el backend. Esta aplicación permite la gestión de datos de manera intuitiva y eficiente.
 
-## Development server
+## Descripción
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- **Frontend:** Desarrollado con Angular y PrimeNG para ofrecer una experiencia de usuario rica y dinámica.
+- **Backend:** Utiliza Laravel para manejar la lógica del servidor y la interacción con la base de datos.
 
-## Code scaffolding
+## Requisitos
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- [Node.js](https://nodejs.org/) (v18.0.0 o superior)
+- [Angular CLI](https://github.com/angular/angular-cli) (v18.2.1 o superior)
+- [Composer](https://getcomposer.org/) (para Laravel)
+- [PHP](https://www.php.net/) (v8.0 o superior)
+- [MySQL](https://www.mysql.com/) o cualquier otro sistema de gestión de bases de datos compatible con Laravel
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
