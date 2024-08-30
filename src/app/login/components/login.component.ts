@@ -3,7 +3,7 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpLaravelService } from '../../http.service';
 import { LocalstorageService } from '../../localstorage.service';
-import Swal from 'sweetalert2'; // Importa SweetAlert2
+import Swal from 'sweetalert2'; 
 
 @Component({
   selector: 'app-login',
@@ -30,9 +30,7 @@ export class LoginComponent {
   get f() { return this.Formulario.controls; }
 
   onLoggedin() {
-    // Verifica si el formulario es válido
     if (this.Formulario.invalid) {
-      // Muestra un mensaje de error si el formulario es inválido
       Swal.fire({
         icon: 'error',
         title: 'Campos requeridos',
