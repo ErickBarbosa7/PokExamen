@@ -61,4 +61,5 @@ export class VistaComponent {
     getTipoClass(tipo: string): string {
       return `type-${tipo}`;
     }
+    
 }
