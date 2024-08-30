@@ -63,49 +63,54 @@
 }
 
 /****************************************************************/
-/* * Imagen*/
-.imageCard{
+/* Imagen */
+.imageCard {
     width: 100%;
     justify-content: center;
     display: flex;
     height: 350px;
+    position: relative; /* Asegúrate de que los elementos dentro se posicionen bien */
 }
-img{
+
+img {
     margin-top: 70px;
     max-width: 300px;
     top: 0;
     height: 200px;
     position: absolute;
 }
-/****************************************************************/
 
-/* * Estadísticas*/
-.statsCard{
+/****************************************************************/
+/* Estadísticas */
+.statsCard {
     width: 100%;
     height: 20%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.centrar{
+
+.centrar {
     display: flex;
     justify-content: center;
     height: 30px;
     width: 50px;
 }
-.stat{
+
+.stat {
     margin: 30px;
     padding-left: 12px;
     padding-top: 12px;
     padding-bottom: 12px;
 }
 
-.statname{
+.statname {
     font-weight: lighter;
     font-size: 20px;
 }
-/****************************************************************/
 
+/****************************************************************/
+/* Tipos de Pokémon */
 .types {
     display: flex;
     justify-content: center;
@@ -116,6 +121,7 @@ img{
     width: 100px;
     font-size: 14px;
 }
+
 .type {
     border-radius: 100px;
     display: inline-block;
@@ -123,18 +129,36 @@ img{
     margin: 12px;
     color: #000;
 }
-.botones {
-    display: flex;
-    justify-content: flex-end; 
-    margin: 6px;
-}
-.eliminarbutton{
-    margin: 3px;
-}
-.editarbutton{
-    margin: 3px;
-}
 
+/* Estilos de fondo para cada tipo de Pokémon */
+.type-normal { background-color: #D0D0D0; }
+.type-agua { background-color: #5AB2FF; }
+.type-fuego {
+    background-color: #fc9d03; 
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+}
+.type-planta { background-color: #4FCF53; }
+.type-veneno { background-color: #CF4FC3; }
+.type-volador { background-color: #A7E6FF; }
+.type-electrico { background-color: #FFE605; }
+.type-hielo { background-color: #98D8D8; }
+.type-lucha { background-color: #de1440; }
+.type-bicho { background-color: greenyellow; }
+.type-psiquico { background-color: #F85888; }
+.type-acero { background-color: #B8B8D0; }
+.type-oscuro { background-color: #705848; }
+.type-dragon { background-color: #003285; }
+.type-tierra { background-color: #6F4E37; }
+.type-hada { background-color: #ff80ff; }
+.type-fantasma { background-color: #850F8D; }
+.type-roca { background-color: #373A40; }
+
+/****************************************************************/
+/* Estilos específicos para el medio círculo según el tipo */
 .type-normal .mediocirculo { background-color: #D0D0D0; }
 .type-agua .mediocirculo { background-color: #5AB2FF; }
 .type-fuego .mediocirculo { background-color: #fc9d03; }
@@ -154,22 +178,15 @@ img{
 .type-fantasma .mediocirculo { background-color: #850F8D; }
 .type-roca .mediocirculo { background-color: #373A40; }
 
-/* Definiciones de color para tipos */
-.type-normal { background-color: #D0D0D0; }
-.type-agua { background-color: #5AB2FF; }
-.type-fuego { background-color: #fc9d03; }
-.type-planta { background-color: #4FCF53; }
-.type-veneno { background-color: #CF4FC3; }
-.type-volador { background-color: #A7E6FF; }
-.type-electrico { background-color: #FFE605; }
-.type-hielo { background-color: #98D8D8; }
-.type-lucha { background-color: #de1440; }
-.type-bicho { background-color: greenyellow; }
-.type-psiquico { background-color: #F85888; }
-.type-acero { background-color: #B8B8D0; }
-.type-oscuro { background-color: #705848; }
-.type-dragon { background-color: #003285; }
-.type-tierra { background-color: #6F4E37; }
-.type-hada { background-color: #ff80ff; }
-.type-fantasma { background-color: #850F8D; }
-.type-roca { background-color: #373A40; }
+
+/****************************************************************/
+/* Botones */
+.botones {
+    display: flex;
+    justify-content: flex-end; 
+    margin: 6px;
+}
+
+.eliminarbutton, .editarbutton {
+    margin: 3px;
+}

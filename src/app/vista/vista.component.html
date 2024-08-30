@@ -3,15 +3,17 @@
 <div class="header-bottons">
   <div class="botones">
     <button pButton class="eliminarbutton" label="Eliminar" severity="danger" (click)="EliminarRegistro(ID)"></button>
-<button pButton class="editarbutton" [routerLink]="['/actualizar', ID]">Editar</button>
-</div>
+    <button pButton class="editarbutton" [routerLink]="['/actualizar', ID]">Editar</button>
+  </div>
 </div>
 <div *ngIf="Datos">
   <div class="principal">
     <div class="card">
+      <!-- Aplicar clase base y clase de tipo específica -->
       <div [ngClass]="['mediocirculo', 'type-' + Datos?.tipo]">
+        <!-- Contenido del medio círculo (si es necesario) -->
       </div>      
-      
+
       <div class="cardHP">
         <div class="hp">
             <h4 id="HP"><span style="font-weight: 300;">Hp </span>{{ Datos.puntos_de_salud }}</h4>
@@ -27,9 +29,8 @@
         <p [class]="getTipoClass(Datos?.tipo)"
         class="w-50 text-light m-auto rounded-pill text-center fs-6">
         <b>{{Datos?.tipo}}</b>
-     </p>
-           </div>
-      
+        </p>
+      </div>
       
       <div class="statsCard">
         <div class="stat">
