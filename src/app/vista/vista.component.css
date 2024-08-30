@@ -1,11 +1,10 @@
-/** Div Principal */ 
-
+/** Div Principal */
 .principal {
     display: flex;
     flex-direction: column;
     align-items: center;
-    
 }
+
 /** Card Principal */ 
 .card {
     color: #0f0f0f;
@@ -19,12 +18,25 @@
     width: 370px;
     border-radius: 12px;
     margin-bottom: 20px; 
-    position: relative;
+    position: relative; 
     box-shadow: 0 4px 8px rgba(0, 1, 0, 0.2); 
 }
 
-/** Card HP */ 
+/** Medio Círculo en la parte superior de la tarjeta */
+.mediocirculo {
+    width: 100%;
+    height: 200px;
+    top: 0;
+    border-radius: 0 0 50% 50%; 
+    color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    position: absolute; 
+}
 
+/** Card HP */ 
 .cardHP {
     border-radius: 12px 12px 160px 160px;
     position: absolute;
@@ -52,7 +64,6 @@
 
 /****************************************************************/
 /* * Imagen*/
-
 .imageCard{
     width: 100%;
     justify-content: center;
@@ -68,14 +79,13 @@ img{
 }
 /****************************************************************/
 
-/* * Estadisticas*/
+/* * Estadísticas*/
 .statsCard{
     width: 100%;
     height: 20%;
     display: flex;
     align-items: center;
     justify-content: center;
-
 }
 .centrar{
     display: flex;
@@ -96,43 +106,22 @@ img{
 }
 /****************************************************************/
 
-.types{
-    background-color: yellow;
-    height: 100px;
-    top:0;
+.types {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 24px;
+    height: 30px;
     color: #000;
-
+    width: 100px;
+    font-size: 14px;
 }
-.type{
+.type {
     border-radius: 100px;
     display: inline-block;
     padding: 5px 10px;
     margin: 12px;
     color: #000;
-}
-.bottomButtons {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.bottomAnterior button, .bottomSiguiente button {
-    border-radius: 8px;
-    font-size: 18px;
-    height: 60px;
-    width: 160px;
-    margin-top: 20px;
-    background-color: #202120;
-    color: #fff;
-    &:hover{
-        transition-duration: 300ms;
-        background-color: #0f0f0f;
-
-    }
-
-      
-    
-   
 }
 .botones {
     display: flex;
@@ -145,3 +134,42 @@ img{
 .editarbutton{
     margin: 3px;
 }
+
+.type-normal .mediocirculo { background-color: #D0D0D0; }
+.type-agua .mediocirculo { background-color: #5AB2FF; }
+.type-fuego .mediocirculo { background-color: #fc9d03; }
+.type-planta .mediocirculo { background-color: #4FCF53; }
+.type-veneno .mediocirculo { background-color: #CF4FC3; }
+.type-volador .mediocirculo { background-color: #A7E6FF; }
+.type-electrico .mediocirculo { background-color: #FFE605; }
+.type-hielo .mediocirculo { background-color: #98D8D8; }
+.type-lucha .mediocirculo { background-color: #de1440; }
+.type-bicho .mediocirculo { background-color: greenyellow; }
+.type-psiquico .mediocirculo { background-color: #F85888; }
+.type-acero .mediocirculo { background-color: #B8B8D0; }
+.type-oscuro .mediocirculo { background-color: #705848; }
+.type-dragon .mediocirculo { background-color: #003285; }
+.type-tierra .mediocirculo { background-color: #6F4E37; }
+.type-hada .mediocirculo { background-color: #ff80ff; }
+.type-fantasma .mediocirculo { background-color: #850F8D; }
+.type-roca .mediocirculo { background-color: #373A40; }
+
+/* Definiciones de color para tipos */
+.type-normal { background-color: #D0D0D0; }
+.type-agua { background-color: #5AB2FF; }
+.type-fuego { background-color: #fc9d03; }
+.type-planta { background-color: #4FCF53; }
+.type-veneno { background-color: #CF4FC3; }
+.type-volador { background-color: #A7E6FF; }
+.type-electrico { background-color: #FFE605; }
+.type-hielo { background-color: #98D8D8; }
+.type-lucha { background-color: #de1440; }
+.type-bicho { background-color: greenyellow; }
+.type-psiquico { background-color: #F85888; }
+.type-acero { background-color: #B8B8D0; }
+.type-oscuro { background-color: #705848; }
+.type-dragon { background-color: #003285; }
+.type-tierra { background-color: #6F4E37; }
+.type-hada { background-color: #ff80ff; }
+.type-fantasma { background-color: #850F8D; }
+.type-roca { background-color: #373A40; }

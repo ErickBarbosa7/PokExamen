@@ -32,26 +32,7 @@ export class CrearActualizarComponent {
     { name: 'Acero', code: 'acero' },
     { name: 'Hada', code: 'hada' }
   ];
-  typeColors = {
-    normal: '#D0D0D0',
-    agua: '#5AB2FF',
-    fuego: '#fc9d03',
-    planta: '#4FCF53',
-    veneno: '#CF4FC3',
-    volador: '#A7E6FF',
-    electrico: '#FFE605',
-    hielo: '#98D8D8',
-    lucha: '#de1440',
-    bicho: 'greenyellow',
-    psiquico: '#F85888',
-    acero: '#B8B8D0',
-    oscuro: '#705848',
-    dragon: '#003285',
-    tierra: '#6F4E37',
-    hada: '#ff80ff',
-    fantasma: '#850F8D',
-    roca: '#373A40',
-  };
+ 
   ID?: number;
 
   constructor(
@@ -105,53 +86,50 @@ export class CrearActualizarComponent {
   get f() { return this.CrearActualizarFormulario.controls; }
 
   Guardar() {
-    console.log('Formulario es válido:', this.CrearActualizarFormulario.valid);  
-    console.log('Datos del formulario:', this.CrearActualizarFormulario.value);  
-  
     if (this.CrearActualizarFormulario.invalid) {
       this.CrearActualizarFormulario.markAllAsTouched();
-      console.log('Formulario es inválido'); 
       return;
     }
   
+    // Convertir el tipo a string si es necesario
+    const formularioData = this.CrearActualizarFormulario.value;
+    formularioData.tipo = formularioData.tipo ? formularioData.tipo.code : '';
+  
     if (this.ID === undefined) {
-      this.servicio.Service_Post('pokemones', '', this.CrearActualizarFormulario.value).subscribe((res: any) => {
-        console.log('Respuesta de creación:', res); 
+      this.servicio.Service_Post('pokemones', '', formularioData).subscribe((res: any) => {
         if (res.estatus) {
           Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "Pokémon creado",
+            position: 'center',
+            icon: 'success',
+            title: 'Pokémon creado',
             showConfirmButton: true,
             timer: 1500
           });
           this.CrearActualizarFormulario.reset();
-          this.router.navigate(['/vista-general']);  
+          this.router.navigate(['/vista-general']);
         } else {
           this.mostrarErrores(res.mensaje);
         }
       });
     } else {
-      if (this.ID !== undefined) {
-        this.servicio.Service_Patch('pokemones', this.ID, this.CrearActualizarFormulario.value).subscribe((res: any) => {
-          console.log('Respuesta de modificación:', res); 
-          if (res.estatus) {
-            Swal.fire({
-              position: "center",
-              icon: "success",
-              title: "Pokémon modificado",
-              showConfirmButton: true,
-              timer: 1500
-            });
-            this.CrearActualizarFormulario.reset();
-            this.router.navigate(['/vista-general']);  
-          } else {
-            this.mostrarErrores(res.mensaje);
-          }
-        });
-      }
+      this.servicio.Service_Patch('pokemones', this.ID, formularioData).subscribe((res: any) => {
+        if (res.estatus) {
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Pokémon modificado',
+            showConfirmButton: true,
+            timer: 1500
+          });
+          this.CrearActualizarFormulario.reset();
+          this.router.navigate(['/vista-general']);
+        } else {
+          this.mostrarErrores(res.mensaje);
+        }
+      });
     }
   }
+  
   
   private mostrarErrores(mensajes: any) {
     let message = '';

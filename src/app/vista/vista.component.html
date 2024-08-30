@@ -6,10 +6,12 @@
 <button pButton class="editarbutton" [routerLink]="['/actualizar', ID]">Editar</button>
 </div>
 </div>
-
 <div *ngIf="Datos">
   <div class="principal">
     <div class="card">
+      <div [ngClass]="['mediocirculo', 'type-' + Datos?.tipo]">
+      </div>      
+      
       <div class="cardHP">
         <div class="hp">
             <h4 id="HP"><span style="font-weight: 300;">Hp </span>{{ Datos.puntos_de_salud }}</h4>
@@ -22,8 +24,11 @@
         <h1 id="Name">{{ Datos.nombre }}</h1>
       </div>
       <div class="types">
-        <h3 id="Types">Type: {{ Datos.tipo | tipoPokemon }}</h3>
-      </div>
+        <p [class]="getTipoClass(Datos?.tipo)"
+        class="w-50 text-light m-auto rounded-pill text-center fs-6">
+        <b>{{Datos?.tipo}}</b>
+     </p>
+           </div>
       
       
       <div class="statsCard">
