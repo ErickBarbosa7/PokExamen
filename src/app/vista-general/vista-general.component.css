@@ -1,0 +1,69 @@
+.container-button-crear {
+    display: flex;
+    justify-content: flex-end;  
+    padding: 10px;  
+  }
+  .btn-success{
+  --bs-btn-color: #fff;
+    --bs-btn-bg: #198754;
+    --bs-btn-border-color: #198754;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #157347;
+    --bs-btn-hover-border-color: #146c43;
+    --bs-btn-focus-shadow-rgb: 60, 153, 110;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #146c43;
+    --bs-btn-active-border-color: #13653f;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #198754;
+    --bs-btn-disabled-border-color: #198754;
+  }
+  .card-title{
+    margin-left: 28px;
+    text-align: left;
+    font-size: 18px;
+  }
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; 
+    padding-left: 250px;
+    padding-right: 250px;
+  }
+  
+  .card {
+    background-color: #fff;
+    border: 1px solid #ddd; 
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+    margin: 10px; 
+    width: 250px; 
+    text-align: center;
+  }
+  
+  
+  .img {
+    max-width: 100%; 
+    height: auto; 
+  }
+  
+  .button {
+    background-color: #007bff;
+    border: none;
+    color: white; 
+    padding: 10px 20px; 
+    text-align: center; 
+    text-decoration: none; 
+    display: inline-block;
+    font-size: 16px; 
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 220px;
+  }
+  
+  .button:hover {
+    background-color: #0056b3; 
+  }
+  

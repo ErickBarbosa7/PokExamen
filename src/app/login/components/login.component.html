@@ -1,0 +1,31 @@
+<div class="login-form">
+  <div class="image">
+    <img src="https://pokexamen.bananasoft.mx/assets/poke-ball.png" alt="Pokeball">
+  </div>
+  <form [formGroup]="Formulario" (ngSubmit)="onLoggedin()">
+      <input 
+        type="email" 
+        id="email" 
+        formControlName="email" 
+        class="form-control"
+        [ngClass]="{'is-invalid': f['email'].invalid && (f['email'].dirty || f['email'].touched)}"
+        placeholder="Correo electrónico"/>
+      <div *ngIf="f['email'].invalid && (f['email'].dirty || f['email'].touched)" class="text-danger">
+        <small *ngIf="f['email'].errors?.['required']">El correo electrónico es requerido.</small>
+        <small *ngIf="f['email'].errors?.['email']">Por favor, ingrese un correo electrónico válido.</small>
+      </div>
+
+      <input 
+        type="password" 
+        id="password" 
+        formControlName="password" 
+        class="form-control"
+        [ngClass]="{'is-invalid': f['password'].invalid && (f['password'].dirty || f['password'].touched)}"
+        placeholder="Contraseña" />
+      <div *ngIf="f['password'].invalid && (f['password'].dirty || f['password'].touched)" class="text-danger">
+        <small *ngIf="f['password'].errors?.['required']">La contraseña es requerida.</small>
+      </div>
+
+    <button type="submit" class="enviar">Iniciar Sesión</button>
+  </form>
+</div>

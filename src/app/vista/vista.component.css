@@ -1,0 +1,147 @@
+/** Div Principal */ 
+
+.principal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+/** Card Principal */ 
+.card {
+    color: #0f0f0f;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    max-height: 550px;
+    height: 570px;
+    width: 370px;
+    border-radius: 12px;
+    margin-bottom: 20px; 
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 1, 0, 0.2); 
+}
+
+/** Card HP */ 
+
+.cardHP {
+    border-radius: 12px 12px 160px 160px;
+    position: absolute;
+    top: 0; 
+    width: 350px;
+    height: 170px;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 20px;
+}
+
+.hp {
+    border-radius: 200px;
+    margin-top: 35px;
+    margin-right: 10px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 90px;
+    height: 40px;
+    background-color: #fff;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 1, 0, 0.2); 
+}
+
+/****************************************************************/
+/* * Imagen*/
+
+.imageCard{
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    height: 350px;
+}
+img{
+    margin-top: 70px;
+    max-width: 300px;
+    top: 0;
+    height: 200px;
+    position: absolute;
+}
+/****************************************************************/
+
+/* * Estadisticas*/
+.statsCard{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.centrar{
+    display: flex;
+    justify-content: center;
+    height: 30px;
+    width: 50px;
+}
+.stat{
+    margin: 30px;
+    padding-left: 12px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.statname{
+    font-weight: lighter;
+    font-size: 20px;
+}
+/****************************************************************/
+
+.types{
+    background-color: yellow;
+    height: 100px;
+    top:0;
+    color: #000;
+
+}
+.type{
+    border-radius: 100px;
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 12px;
+    color: #000;
+}
+.bottomButtons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bottomAnterior button, .bottomSiguiente button {
+    border-radius: 8px;
+    font-size: 18px;
+    height: 60px;
+    width: 160px;
+    margin-top: 20px;
+    background-color: #202120;
+    color: #fff;
+    &:hover{
+        transition-duration: 300ms;
+        background-color: #0f0f0f;
+
+    }
+
+      
+    
+   
+}
+.botones {
+    display: flex;
+    justify-content: flex-end; 
+    margin: 6px;
+}
+.eliminarbutton{
+    margin: 3px;
+}
+.editarbutton{
+    margin: 3px;
+}

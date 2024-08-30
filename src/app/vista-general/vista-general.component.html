@@ -1,0 +1,25 @@
+<app-navbar></app-navbar>
+
+<div class="container-button-crear">
+  <button pButton pRipple label="Crear" class="p-button-success" [routerLink]="['/crear']"></button></div>
+  <hr>
+
+<div class="container">
+  <div *ngFor="let pokemon of pokemones" class="card">
+    <div class="card-body">
+      <img class="img" *ngIf="pokemon.url" [src]="pokemon.url" alt="Imagen de {{ pokemon.nombre }}">
+      <h5 class="card-title">{{ pokemon.nombre }}</h5>
+      <p class="card-text">{{ pokemon.creadoPor | creadoPor }}</p>
+      <button class="button" [routerLink]="['/vista', pokemon.id]">Ver</button> 
+      <hr>
+      <p class="card-text">Actualización: {{ pokemon.fechaActualizacion | tiempoDesdeActualizacion }} días atrás</p> 
+    </div>
+  </div>
+</div>
+
+
+<p-paginator 
+(onPageChange)="onPageChange($event)" 
+[rows]="rows" 
+[totalRecords]="total" 
+[rowsPerPageOptions]="[3, 5, 10]" />

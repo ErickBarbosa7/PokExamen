@@ -1,0 +1,50 @@
+<app-navbar></app-navbar>
+<div class="principal">
+
+<form [formGroup]="CrearActualizarFormulario" (ngSubmit)="Guardar()">
+  <div class="p-fluid">
+    <div class="p-field-name">
+      <label for="nombre">Nombre</label>
+      <input id="nombre" pInputText formControlName="nombre" />
+    </div>
+
+    <div class="p-field-tipo">
+      <label for="tipo">Tipo</label>
+      <p-dropdown id="tipo" formControlName="tipo" [options]="tipos" optionLabel="name" placeholder="Seleccione un tipo"></p-dropdown>
+    </div>
+
+    <div class="p-field">
+      <label for="nivel">Nivel</label>
+      <input id="nivel" pInputText formControlName="nivel" type="number" />
+    </div>
+    
+
+    <div class="p-field">
+      <label for="puntos_de_salud">HP</label>
+      <input id="puntos_de_salud" pInputText formControlName="puntos_de_salud" type="number" />
+    </div>
+
+    <div class="p-field">
+      <label for="ataque">Ataque</label>
+      <input id="ataque" pInputText formControlName="ataque" type="number" />
+    </div>
+
+    <div class="p-field">
+      <label for="defensa">Defensa</label>
+      <input id="defensa" pInputText formControlName="defensa" type="number" />
+    </div>
+
+    <div class="p-field">
+      <label for="velocidad">Velocidad</label>
+      <input id="velocidad" pInputText formControlName="velocidad" type="number" />
+    </div>
+
+    <div class="p-field">
+      <label for="url">URL</label>
+      <input id="url" pInputText formControlName="url" />
+    </div>
+
+    <button pButton type="submit" label="Guardar"></button>
+  </div>
+</form>
+</div>

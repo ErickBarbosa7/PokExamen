@@ -1,0 +1,51 @@
+<app-navbar></app-navbar>
+
+<div class="header-bottons">
+  <div class="botones">
+    <button pButton class="eliminarbutton" label="Eliminar" severity="danger" (click)="EliminarRegistro(ID)"></button>
+<button pButton class="editarbutton" [routerLink]="['/actualizar', ID]">Editar</button>
+</div>
+</div>
+
+<div *ngIf="Datos">
+  <div class="principal">
+    <div class="card">
+      <div class="cardHP">
+        <div class="hp">
+            <h4 id="HP"><span style="font-weight: 300;">Hp </span>{{ Datos.puntos_de_salud }}</h4>
+        </div>
+      </div>
+      <div class="imageCard">
+        <img *ngIf="Datos.url" [src]="Datos.url" clas="Imagen" alt="{{ Datos.nombre }}">
+      </div>
+      <div class="NamePokemonCard">
+        <h1 id="Name">{{ Datos.nombre }}</h1>
+      </div>
+      <div class="types">
+        <h3 id="Types">Type: {{ Datos.tipo | tipoPokemon }}</h3>
+      </div>
+      
+      
+      <div class="statsCard">
+        <div class="stat">
+          <div class="centrar">
+            <h2 class="stat_inf" id="Attack">{{ Datos.ataque }}</h2>
+          </div>
+          <h4 class="statname">Attack</h4>
+        </div>
+        <div class="stat">
+          <div class="centrar">
+            <h2 class="stat_inf" id="defense">{{ Datos.defensa }}</h2>
+          </div>
+          <h4 class="statname">Defense</h4>
+        </div>
+        <div class="stat">
+          <div class="centrar">
+            <h2 class="stat_inf" id="speed">{{ Datos.velocidad }}</h2>
+          </div>
+          <h4 class="statname">Speed</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

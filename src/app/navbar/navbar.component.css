@@ -1,0 +1,43 @@
+/* src/app/navbar/navbar.component.css */
+.navbar-principal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px; /* Ajusta el espaciado alrededor del contenido */
+    background-color: #f8f9fa; /* Color de fondo para la barra de navegación */
+  }
+  
+  .navbar-logo {
+    max-height: 40px; /* Ajusta la altura máxima de la imagen */
+  }
+  .no-style {
+    background: none;      /* Elimina el fondo del botón */
+    border: none;          /* Elimina el borde del botón */
+    font-size: var(--bs-nav-link-font-size);
+    padding: 0;            /* Ajusta el padding si es necesario */
+    box-shadow: none;  
+    cursor: pointer;
+  }
+  
+  .navbar-cerrar-sesion {
+    display: block;
+    padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
+    font-size: var(--bs-nav-link-font-size);
+    font-weight: var(--bs-nav-link-font-weight);
+    color: var(--bs-nav-link-color);
+    text-decoration: none;
+    background: 0 0;
+    border: 0;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
+}
+  
+  .navbar-cerrar-sesion .btn {
+    margin-left: auto; /* Esto asegura que el botón esté alineado a la derecha */
+  }
+  
+  hr {
+    margin: 0; /* Ajusta el margen según sea necesario */
+    border: 0;
+    border-top: 2px solid #000; /* Color y grosor de la línea horizontal */
+  }
+  
