@@ -35,6 +35,7 @@ export class CrearActualizarComponent {
   ];
 
   ID?: number;
+  isLoading: boolean = false;
 
   constructor(
     private fb: FormBuilder, 
@@ -44,8 +45,8 @@ export class CrearActualizarComponent {
     private messageService: MessageService
   ) {
     this.CrearActualizarFormulario = this.fb.group({
-      nombre: ['', [Validators.required]],
-      tipo: ['', [Validators.required]],
+      nombre: ['', Validators.required],
+      tipo: ['', Validators.required],
       puntos_de_salud: ['', [Validators.max(999)]],
       ataque: ['', [Validators.max(99)]],
       defensa: ['', [Validators.max(99)]],
@@ -53,13 +54,9 @@ export class CrearActualizarComponent {
       url: ['']
     });
 
-    this.CrearActualizarFormulario.get('puntos_de_salud')?.valueChanges.subscribe(value => {
-      this.limitarValor('puntos_de_salud', 999);
-    });
-
-    ['ataque', 'defensa', 'velocidad'].forEach(field => {
+    ['puntos_de_salud', 'ataque', 'defensa', 'velocidad'].forEach(field => {
       this.CrearActualizarFormulario.get(field)?.valueChanges.subscribe(value => {
-        this.limitarValor(field, 99);
+        this.limitarValor(field, field === 'puntos_de_salud' ? 999 : 99);
       });
     });
 
@@ -70,16 +67,11 @@ export class CrearActualizarComponent {
       }
     });
   }
-  addSingle() {
-    this.messageService.add({severity:'success', summary:'Service Message', detail:'Via MessageService'});
-}
+
   limitarValor(campo: string, limite: number) {
     const control = this.CrearActualizarFormulario.get(campo);
-    if (control) {
-      const valor = control.value;
-      if (valor > limite) {
-        control.setValue(limite, { emitEvent: false });
-      }
+    if (control && control.value > limite) {
+      control.setValue(limite, { emitEvent: false });
     }
   }
 
@@ -93,8 +85,7 @@ export class CrearActualizarComponent {
       this.servicio.Service_Get('pokemones', this.ID).subscribe((res: any) => {
         if (res.estatus) {
           const pokemonData = res.data;
-          pokemonData.tipo = this.tipos.find(tipo => tipo.code === pokemonData.tipo);
-  
+          // Si el tipo en `pokemonData` es un código, no es necesario convertirlo a un objeto completo.
           this.CrearActualizarFormulario.patchValue(pokemonData);
         } else {
           this.messageService.add({severity: 'error', summary: 'Error', detail: res.message});
@@ -103,6 +94,7 @@ export class CrearActualizarComponent {
       });
     }
   }
+  
 
   get f() { return this.CrearActualizarFormulario.controls; }
 
@@ -113,10 +105,13 @@ export class CrearActualizarComponent {
     }
   
     const formularioData = this.CrearActualizarFormulario.value;
-    formularioData.tipo = formularioData.tipo ? formularioData.tipo.code : '';
+    formularioData.tipo = formularioData.tipo || ''; 
+  
+    this.isLoading = true;
   
     if (this.ID === undefined) {
       this.servicio.Service_Post('pokemones', '', formularioData).subscribe((res: any) => {
+        this.isLoading = false;
         if (res.estatus) {
           this.messageService.add({severity: 'success', summary: 'Éxito', detail: 'Pokémon creado'});
           this.CrearActualizarFormulario.reset();
@@ -127,6 +122,7 @@ export class CrearActualizarComponent {
       });
     } else {
       this.servicio.Service_Patch('pokemones', this.ID, formularioData).subscribe((res: any) => {
+        this.isLoading = false; // Ocultar el indicador de carga
         if (res.estatus) {
           this.messageService.add({severity: 'success', summary: 'Éxito', detail: 'Pokémon modificado'});
           this.CrearActualizarFormulario.reset();
@@ -137,6 +133,7 @@ export class CrearActualizarComponent {
       });
     }
   }
+  
   
   private mostrarErrores(mensajes: any) {
     let message = '';

@@ -1,48 +1,56 @@
 <app-navbar></app-navbar>
 
 <div class="principal">
-
-  <form class="form" [formGroup]="CrearActualizarFormulario" (ngSubmit)="Guardar()">
-    <div class="p-fluid">
-      <div class="p-field-name">
-        <label class="text" for="nombre">Nombre</label>
-        <input id="nombre" pInputText formControlName="nombre" />
+  
+  <form [formGroup]="CrearActualizarFormulario" (ngSubmit)="Guardar()">
+    <div class="row mb-3">
+      <div class="col-12 col-md-6 mb-3">
+        <label for="nombre" class="form-label form-label-large">Nombre</label>
+        <input type="text" class="form-control form-control-lg" id="nombre" formControlName="nombre">
       </div>
-
-      <div class="p-field-tipo">
-        <label for="tipo">Tipo</label>
-        <p-dropdown id="tipo" formControlName="tipo" [options]="tipos" optionLabel="name" placeholder="Seleccione un tipo"></p-dropdown>
-      </div>
-
-      <div class="p-field">
-        <label class="url" for="url">URL</label>
-        <input class="url" id="url" pInputText formControlName="url" />
+    
+      <div class="col-12 col-md-6 mb-3">
+        <label for="tipo" class="form-label form-label-large">Tipo</label>
+        <select class="form-select form-select-lg" id="tipo" formControlName="tipo">
+          <option value="" disabled selected>Seleccione un tipo</option>
+          <option *ngFor="let tipo of tipos" [value]="tipo.code">{{ tipo.name }}</option>
+        </select>
       </div>
       
-      <div class="p-field">
-        <label class="text" for="puntos_de_salud">HP</label>
-        <input class="stat" id="puntos_de_salud" pInputText formControlName="puntos_de_salud" type="number" />
-      </div>
-
-      <div class="p-field">
-        <label class="text" for="ataque">Ataque</label>
-        <input class="stat" id="ataque" pInputText formControlName="ataque" type="number" />
-      </div>
-
-      <div class="p-field">
-        <label class="text" for="defensa">Defensa</label>
-        <input class="stat" id="defensa" pInputText formControlName="defensa" type="number" />
-      </div>
-
-      <div class="p-field">
-        <label class="text" for="velocidad">Velocidad</label>
-        <input class="stat" id="velocidad" pInputText formControlName="velocidad" type="number" />
-      </div>
-
-      <button pButton type="submit" label="Guardar" class="btn p-button-success"></button>
+   
     </div>
-  </form>
 
+    <div class="mb-3">
+      <label for="url" class="form-label form-label-large">URL</label>
+      <input type="text" class="form-control form-control-lg" id="url" formControlName="url">
+    </div>      
+
+    <div class="row mb-3">
+      <div class="col-12 col-md-2 mb-3">
+        <label for="puntos_de_salud" class="form-label form-label-large">HP</label>
+        <input type="number" class="form-control form-control-lg stat-field" id="puntos_de_salud" formControlName="puntos_de_salud">
+      </div>
+
+      <div class="col-12 col-md-2 mb-3">
+        <label for="ataque" class="form-label form-label-large">Ataque</label>
+        <input type="number" class="form-control form-control-lg stat-field" id="ataque" formControlName="ataque">
+      </div>
+
+      <div class="col-12 col-md-2 mb-3">
+        <label for="defensa" class="form-label form-label-large">Defensa</label>
+        <input type="number" class="form-control form-control-lg stat-field" id="defensa" formControlName="defensa">
+      </div>
+
+      <div class="col-12 col-md-2 mb-3">
+        <label for="velocidad" class="form-label form-label-large">Velocidad</label>
+        <input type="number" class="form-control form-control-lg stat-field" id="velocidad" formControlName="velocidad">
+      </div>
+    </div>
+    
+    <button type="submit" class="btn btn-primary" [disabled]="isLoading">Guardar</button>
+  </form>
 </div>
+
+<hr>
 
 <p-toast></p-toast>

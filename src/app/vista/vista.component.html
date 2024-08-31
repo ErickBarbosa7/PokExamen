@@ -15,14 +15,14 @@
 
       <div class="cardHP">
         <div class="hp">
-            <h4 id="HP"><span style="font-weight: 300;">Hp </span>{{ Datos.puntos_de_salud }}</h4>
+            <h4 class="hp-inf2" id="HP"><span class="hp-inf" style="font-weight: 200;">Hp </span>{{ Datos.puntos_de_salud }}</h4>
         </div>
       </div>
       <div class="imageCard">
         <img *ngIf="Datos.url" [src]="Datos.url" clas="Imagen" alt="{{ Datos.nombre }}">
       </div>
       <div class="NamePokemonCard">
-        <h1 id="Name">{{ Datos.nombre }}</h1>
+        <h1 class="NamePokemonCard" id="Name">{{ Datos.nombre }}</h1>
       </div>
       <div class="types">
         <p [class]="getTipoClass(Datos?.tipo)"
