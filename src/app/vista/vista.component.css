@@ -157,12 +157,11 @@ p{
 .type-lucha { background-color: #de1440; }
 .type-bicho { background-color: greenyellow; }
 .type-psiquico { background-color: #F85888; }
-.type-acero { background-color: #B8B8D0; }
+.type-acero { background-color: #3C5B6F; }
 .type-oscuro { background-color: #705848; }
 .type-dragon { background-color: #003285; }
 .type-tierra { background-color: #6F4E37; }
 .type-siniestro { background-color: #69306D; }
 .type-hada { background-color: #ff80ff; }
 .type-fantasma { background-color: #850F8D; }
-.type-roca {
-     background-color: #373A40; }
+.type-roca { background-color: #373A40; }

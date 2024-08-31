@@ -1,13 +1,14 @@
-import { HttpLaravelService } from '../http.service';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import Swal from 'sweetalert2';
+import { HttpLaravelService } from '../http.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-crear-actualizar',
   templateUrl: './crear-actualizar.component.html',
-  styleUrls: ['./crear-actualizar.component.css']
+  styleUrls: ['./crear-actualizar.component.css'],
+  providers: [MessageService]
 })
 export class CrearActualizarComponent {
 
@@ -32,24 +33,34 @@ export class CrearActualizarComponent {
     { name: 'Acero', code: 'acero' },
     { name: 'Hada', code: 'hada' }
   ];
- 
+
   ID?: number;
 
   constructor(
     private fb: FormBuilder, 
     public servicio: HttpLaravelService, 
     private activatedRoute: ActivatedRoute, 
-    private router: Router
+    private router: Router,
+    private messageService: MessageService
   ) {
     this.CrearActualizarFormulario = this.fb.group({
       nombre: ['', [Validators.required]],
       tipo: ['', [Validators.required]],
-      nivel: [''],
-      puntos_de_salud: [''],
-      ataque: [''],
-      defensa: [''],
-      velocidad: [''],
+      puntos_de_salud: ['', [Validators.max(999)]],
+      ataque: ['', [Validators.max(99)]],
+      defensa: ['', [Validators.max(99)]],
+      velocidad: ['', [Validators.max(99)]],
       url: ['']
+    });
+
+    this.CrearActualizarFormulario.get('puntos_de_salud')?.valueChanges.subscribe(value => {
+      this.limitarValor('puntos_de_salud', 999);
+    });
+
+    ['ataque', 'defensa', 'velocidad'].forEach(field => {
+      this.CrearActualizarFormulario.get(field)?.valueChanges.subscribe(value => {
+        this.limitarValor(field, 99);
+      });
     });
 
     this.activatedRoute.params.subscribe(params => {
@@ -58,6 +69,18 @@ export class CrearActualizarComponent {
         this.obtenerData();
       }
     });
+  }
+  addSingle() {
+    this.messageService.add({severity:'success', summary:'Service Message', detail:'Via MessageService'});
+}
+  limitarValor(campo: string, limite: number) {
+    const control = this.CrearActualizarFormulario.get(campo);
+    if (control) {
+      const valor = control.value;
+      if (valor > limite) {
+        control.setValue(limite, { emitEvent: false });
+      }
+    }
   }
 
   isValid(field: string): boolean {
@@ -69,14 +92,12 @@ export class CrearActualizarComponent {
     if (this.ID !== undefined) {
       this.servicio.Service_Get('pokemones', this.ID).subscribe((res: any) => {
         if (res.estatus) {
-          this.CrearActualizarFormulario.patchValue(res.data);
+          const pokemonData = res.data;
+          pokemonData.tipo = this.tipos.find(tipo => tipo.code === pokemonData.tipo);
+  
+          this.CrearActualizarFormulario.patchValue(pokemonData);
         } else {
-          Swal.fire({
-            icon: "error",
-            title: res.message,
-            showConfirmButton: true,
-            timer: 1500
-          });
+          this.messageService.add({severity: 'error', summary: 'Error', detail: res.message});
           this.router.navigate(['/vista-general']);
         }
       });
@@ -91,20 +112,13 @@ export class CrearActualizarComponent {
       return;
     }
   
-    // Convertir el tipo a string si es necesario
     const formularioData = this.CrearActualizarFormulario.value;
     formularioData.tipo = formularioData.tipo ? formularioData.tipo.code : '';
   
     if (this.ID === undefined) {
       this.servicio.Service_Post('pokemones', '', formularioData).subscribe((res: any) => {
         if (res.estatus) {
-          Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: 'Pokémon creado',
-            showConfirmButton: true,
-            timer: 1500
-          });
+          this.messageService.add({severity: 'success', summary: 'Éxito', detail: 'Pokémon creado'});
           this.CrearActualizarFormulario.reset();
           this.router.navigate(['/vista-general']);
         } else {
@@ -114,13 +128,7 @@ export class CrearActualizarComponent {
     } else {
       this.servicio.Service_Patch('pokemones', this.ID, formularioData).subscribe((res: any) => {
         if (res.estatus) {
-          Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: 'Pokémon modificado',
-            showConfirmButton: true,
-            timer: 1500
-          });
+          this.messageService.add({severity: 'success', summary: 'Éxito', detail: 'Pokémon modificado'});
           this.CrearActualizarFormulario.reset();
           this.router.navigate(['/vista-general']);
         } else {
@@ -130,19 +138,11 @@ export class CrearActualizarComponent {
     }
   }
   
-  
   private mostrarErrores(mensajes: any) {
     let message = '';
     for (const [key, value] of Object.entries(mensajes)) {
       message += `${key}: ${value}\n`;
     }
-    Swal.fire({
-      icon: 'error',
-      title: 'Error',
-      text: message.trim(),
-      showConfirmButton: true,
-      timer: 1500
-    });
+    this.messageService.add({severity: 'error', summary: 'Error', detail: message.trim()});
   }
-  
 }

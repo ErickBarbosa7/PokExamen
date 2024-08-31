@@ -18,6 +18,7 @@ import { CreadoPorPipe } from './pipes/creado-por.pipe';
 import { TiempoDesdeActualizacionPipe } from './pipes/tiempo-desde-actualizacion.pipe';
 import { PaginatorModule } from 'primeng/paginator';
 import { TipoPokemonPipe } from './pipes/TipoPokemonPipe.pipe';
+import { ToastModule } from 'primeng/toast';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +31,7 @@ import { TipoPokemonPipe } from './pipes/TipoPokemonPipe.pipe';
     TipoPokemonPipe
   ],
   imports: [
+    ToastModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,

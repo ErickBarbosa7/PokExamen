@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-  private loggedIn = false; // Estado de autenticación
+  private loggedIn = false; 
 
   constructor(private router: Router) {}
 
@@ -20,6 +20,10 @@ export class AuthService {
 
   logout(): void {
     this.loggedIn = false;
-    this.router.navigate(['/login']); // Redirige al usuario a la página de inicio de sesión
+    this.router.navigate(['/login']);
+  }
+  obtenerUsuarioActualId(): number {
+    const usuario = JSON.parse(localStorage.getItem('usuario') || '{}');
+    return usuario.id;
   }
 }

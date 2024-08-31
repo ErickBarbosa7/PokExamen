@@ -10,11 +10,30 @@ const routes: Routes = [
     path: 'login',
     loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
   },
-  { path: 'vista-general', component: VistaGeneralComponent },
-  { path: 'vista/:id', component: VistaComponent},
-  { path: 'crear', component: CrearActualizarComponent }, 
-  {path: 'actualizar/:id', component: CrearActualizarComponent},
-  { path: '**', redirectTo: 'login' } 
+  { 
+    path: 'vista-general', 
+    component: VistaGeneralComponent, 
+    canActivate: [authGuard]  // Protegido con authGuard
+  },
+  { 
+    path: 'vista/:id', 
+    component: VistaComponent, 
+    canActivate: [authGuard]  
+  },
+  { 
+    path: 'crear', 
+    component: CrearActualizarComponent, 
+    canActivate: [authGuard]  
+  }, 
+  {
+    path: 'actualizar/:id', 
+    component: CrearActualizarComponent, 
+    canActivate: [authGuard] 
+  },
+  { 
+    path: '**', 
+    redirectTo: 'login' 
+  }
 ];
 
 @NgModule({
