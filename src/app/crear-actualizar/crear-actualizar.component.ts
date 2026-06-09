@@ -47,6 +47,7 @@ export class CrearActualizarComponent {
     this.CrearActualizarFormulario = this.fb.group({
       nombre: ['', Validators.required],
       tipo: ['', Validators.required],
+      nivel: ['', [Validators.required, Validators.min(1)]],
       puntos_de_salud: ['', [Validators.max(999)]],
       ataque: ['', [Validators.max(99)]],
       defensa: ['', [Validators.max(99)]],

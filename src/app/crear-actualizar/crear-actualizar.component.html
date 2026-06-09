@@ -16,7 +16,10 @@
           <option *ngFor="let tipo of tipos" [value]="tipo.code">{{ tipo.name }}</option>
         </select>
       </div>
-      
+      <div class="col-12 col-md-2 mb-3">
+  <label for="nivel" class="form-label form-label-large">Nivel</label>
+  <input type="number" class="form-control form-control-lg stat-field" id="nivel" formControlName="nivel">
+</div>
    
     </div>
 
